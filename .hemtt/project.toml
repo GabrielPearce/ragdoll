@@ -1,7 +1,15 @@
 name = "ragdoll"
 prefix = "VD"
 
-# Addons table defines each PBO to be built.
+# Define the PBO to build
 [addons.ragdoll]
 source = ""          # Root of your mod source
 destination = "addons"
+
+# Explicitly specify a version so HEMTT doesn't look for script_version.hpp
+[version]
+major = 1
+minor = 0
+patch = 0
+build = 0
+git_hash = 0        # Disable Git hash requirement
