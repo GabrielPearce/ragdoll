@@ -1,0 +1,7 @@
+name = "ragdoll"
+prefix = "VD"
+
+# Addons table defines each PBO to be built.
+[addons.ragdoll]
+source = ""          # Root of your mod source
+destination = "addons"
