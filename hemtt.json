@@ -1,0 +1,11 @@
+{
+  "name": "ragdoll",
+  "prefix": "VD",
+  "targets": [
+    {
+      "name": "ragdoll",
+      "source": "",
+      "destination": "addons"
+    }
+  ]
+}
