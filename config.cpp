@@ -1042,3 +1042,64 @@ class cfgMods
 	author="venomDeejays";
 	timepacked="1632411863";
 };
+
+
+// ============================================================================
+//  Dedicated-server compatible wrapper for ragdoll behaviour
+//  (additive: does not touch original config, just adds new patch + functions)
+// ============================================================================
+
+class CfgPatches
+{
+    class GPR_RagdollDedicated
+    {
+        name = "Gabe Ragdoll Dedicated Wrapper";
+        units[] = {};
+        weapons[] = {};
+        requiredVersion = 1.98;
+
+        // If you know the original patch class name, add it here instead of A3_Data_F
+        // e.g. requiredAddons[] = {"VD_RFX_DRA"};
+        requiredAddons[] = {"A3_Data_F"};
+        author = "Gabe";
+    };
+};
+
+class CfgFunctions
+{
+    class GPR_Ragdoll
+    {
+        tag = "GPR_Ragdoll";
+
+        class Server
+        {
+            file = "gpr_ragdoll\\server";
+            class initServer
+            {
+                preInit = 1;    // runs automatically on server at mission start
+            };
+        };
+
+        class Client
+        {
+            file = "gpr_ragdoll\\client";
+            class applyRagdoll {};   // GPR_Ragdoll_fnc_applyRagdoll
+        };
+    };
+};
+
+class CfgRemoteExec
+{
+    class Functions
+    {
+        mode = 2;   // 2 = all functions allowed (subject to per-class rules below)
+        jip = 1;
+
+        // Allow server -> clients call of our ragdoll function
+        class GPR_Ragdoll_fnc_applyRagdoll
+        {
+            allowedTargets = 1;  // 1 = clients only
+        };
+    };
+};
+
