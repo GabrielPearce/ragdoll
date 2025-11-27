@@ -1,14 +1,29 @@
 class CfgPatches
 {
-	class VD_RFX_DRA
-	{
-		units[]={};
-		requiredVersion=1;
-		requiredAddons[]=
-		{
-			"A3_Modules_F"
-		};
-	};
+    // Original patch from the mod
+    class VD_RFX_DRA
+    {
+        units[] = {};
+        requiredVersion = 1;
+        requiredAddons[] =
+        {
+            "A3_Modules_F"
+        };
+    };
+
+    // Our dedicated-server wrapper / MP scaffolding
+    class GPR_RagdollDedicated
+    {
+        name = "Gabe Ragdoll Dedicated Wrapper";
+        units[] = {};
+        weapons[] = {};
+        requiredVersion = 1.98;
+
+        // Make sure our wrapper loads AFTER the original ragdoll patch
+        requiredAddons[] = { "VD_RFX_DRA" };
+
+        author = "Gabe";
+    };
 };
 class PhysXMaterials
 {
@@ -1048,22 +1063,6 @@ class cfgMods
 //  Dedicated-server compatible wrapper for ragdoll behaviour
 //  (additive: does not touch original config, just adds new patch + functions)
 // ============================================================================
-
-class CfgPatches
-{
-    class GPR_RagdollDedicated
-    {
-        name = "Gabe Ragdoll Dedicated Wrapper";
-        units[] = {};
-        weapons[] = {};
-        requiredVersion = 1.98;
-
-        // If you know the original patch class name, add it here instead of A3_Data_F
-        // e.g. requiredAddons[] = {"VD_RFX_DRA"};
-        requiredAddons[] = {"A3_Data_F"};
-        author = "Gabe";
-    };
-};
 
 class CfgFunctions
 {
